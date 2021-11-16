@@ -1,1 +1,323 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+main {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    font-family:  'Open Sans Condensed','Comic Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 30px!important;
+}
+
+@media (max-width: 576px) {
+    #imagen-informativa, #imagen-registro-exitoso{
+        width: 100%;
+    }
+}
+
+.navbar{
+    height: 40px;
+}
+
+.bg-light{
+    background-color: white !important;
+}
+
+.btn-primary{
+    background-color:#8A80FD;
+    border-color: #8A80FD;
+    border-radius: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size:.90rem;
+}
+
+.btn-primary:active, .btn-primary:hover, .btn-primary:focus{
+    background-color:#8A80FD;
+    border-color: #8A80FD;
+    box-shadow:none;
+}
+
+#texto-registro-exitoso{
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#texto-principal{
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#formulario-iniciar-sesion, #formulario-registro-motorista{
+    margin-top: 35px;
+}
+
+.labels{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.form-control{
+    margin: auto;
+    width: 300px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-color: rgba(254, 185, 73, 0.5);
+    border-width: 2px;
+    width: 100%;
+}
+
+#recuperar-contrasenia{
+    color: #FEB949;
+    font-weight: 600;
+    margin-top: 35px;
+}
+
+.all-btn{
+    margin-top: 35px;
+    width: 140px;
+}
+
+#crear-cuenta{
+    color: #FEB949;
+    font-weight: bold;
+}
+
+#crear-cuenta-texto{
+    font-weight: 500;
+    margin-top: 35px;
+}
+
+#otras-opciones-de-inicio{
+    margin-top: 50px;
+}
+
+.btn-outline-info{
+    border-color: #c0c0c0;
+    color: black;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 125px;
+}
+
+#formulario-registro-motorista .form-control::placeholder, .form-control{
+    color: #c0c0c0;
+}
+
+#header-perfil{
+    background-color: rgba(202, 201, 242, 0.4);
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    padding: 10px 20px;
+    height: 180px!important;
+}
+
+#barra-perfil{
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+#informacion-perfil{
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#contenedor-principal-perfil{
+    background-color: white;
+    border: 1 solid #c0c0c0;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgb(223, 222, 222);
+    width: 100%;
+}
+
+.items-perfil{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+    padding: 5px 20px;
+}
+
+#ir-ordenes{
+    display: flex;
+    color: #8A80FD;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#texto-ir-ordendes{
+    font-weight: bold;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+#icono-ir-ordenes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    background-color: #8A80FD;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 100%;
+}
+
+#main-perfil{
+    padding: 48px 24px!important;
+}
+
+
+
+#header{
+    background-color: rgba(202, 201, 242, 0.4);
+    height: 200px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    padding: 10px 20px;
+}
+
+#logo-ajustes{
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+#imagen-logo{
+    width: 120px;
+}
+
+.fa-user-cog {
+    font-size: 20px;
+    padding: 5px;
+}
+
+#bienvenida{
+    margin-top: 20px;
+}
+
+#saludo{
+    font-size: 28px;
+    margin-bottom: 0;
+}
+
+body{
+    font-family:  'Open Sans Condensed','Comic Neue', sans-serif;
+}
+
+#texto-ordenes{
+    background-color: white;
+    border: 1 solid #c0c0c0;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgb(223, 222, 222);
+    padding-left: 15px;
+    position: relative;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#cards-ordenes-tomadas, #cards-ordenes-disponibles{
+    display: flex; 
+    flex-direction: column;
+    cursor: pointer;
+}
+
+#card-orden{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgb(223, 222, 222);
+    width: 100%;
+    padding: 5px 20px;
+}
+
+.contenido-card-orden, .precio-card-orden{
+    padding: 7px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	align-items: flex-start;
+    font-size: 14px;
+}
+
+.estilo-btn-perfil{
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    color: #FEB949;
+    font-size: 25px;
+}
+
+#card-orden:hover{
+    background-color: rgba(254, 185, 73, 0.2);
+    
+}
+
+#ver-disponibles, #ver-tomadas{
+    display: flex;
+    justify-content: space-between;
+    color: #8A80FD;
+}
+
+.modal-footer{
+    background-color: rgba(254, 185, 73, .20);
+    border-radius: 20px;
+    justify-content: center!important;
+    padding: 30px 0px;
+}
+
+.modal-content{
+    border-radius: 20px!important;
+}
+
+.modal-orden-tomada{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 25px;
+}
+
+#botones-orden{
+    display: flex;
+    flex-direction: row;
+}
+
+.item-empresa{
+    flex: none;
+    width: calc((100% - 10px)/2);
+    display: flex;
+    cursor: pointer;
+}

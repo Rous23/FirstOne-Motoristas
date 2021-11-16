@@ -1,0 +1,29 @@
+<app-barra-retroceso></app-barra-retroceso>
+<main id="main-iniciar-sesion" class="container">
+    <app-logo></app-logo>
+    <div id="texto-principal">Iniciar Sesión Motorista</div>
+    <div id="formulario-iniciar-sesion">
+        <form>
+            <div class="form-group">
+                <label id="label-correo" for="input-correo" class="labels">Correo electrónico</label>
+                <input id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="form-group">
+                <label id="label-contrasenia" for="input-contrasenia" class="labels">Contraseña</label>
+                <input id="input-contrasenia" type="password" class="form-control" placeholder="contraseña">
+            </div>
+            <div id="recuperar-contrasenia">¿Has olvidado tu contraseña?</div>
+            <div>
+                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" href="#">Iniciar Sesión</button>
+            </div>
+            <div id="crear-cuenta-texto">
+                <h6>¿Aún no tienes cuenta? </h6>
+                <h6 id="crear-cuenta">Crea una aquí</h6>
+            </div>
+        </form>
+    </div>
+    <div id="otras-opciones-de-inicio">
+        <button class="btn btn-outline-info"><i class="fab fa-google"></i> Google</button>
+        <button class="btn btn-outline-info"><i class="fab fa-facebook-f"></i> Facebook</button>
+    </div>
+</main>

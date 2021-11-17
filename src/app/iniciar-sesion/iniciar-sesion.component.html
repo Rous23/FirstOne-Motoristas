@@ -22,7 +22,7 @@
             </div>
             <div id="recuperar-contrasenia">¿Has olvidado tu contraseña?</div>
             <div>
-                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" (click)="iniciarSesion()" [disabled] = "!formularioLogin.valid">Iniciar Sesión</button>
+                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn font-weight-bold py-1" (click)="iniciarSesion()" [disabled] = "!formularioLogin.valid">Iniciar Sesión</button>
             </div>
             <div id="crear-cuenta-texto">
                 <h6>¿Aún no tienes cuenta? </h6>
@@ -31,7 +31,7 @@
         </form>
     </div>
     <div id="otras-opciones-de-inicio">
-        <button class="btn btn-outline-info"><fa-icon [icon] = "faGoogle"></fa-icon> Google</button>
-        <button class="btn btn-outline-info"><fa-icon [icon] = "faFacebookF"></fa-icon> Facebook</button>
+        <button class="btn btn-outline-info mx-3"><fa-icon [icon] = "faGoogle"></fa-icon> Google</button>
+        <button class="btn btn-outline-info mx-3"><fa-icon [icon] = "faFacebookF"></fa-icon> Facebook</button>
     </div>
 </main>

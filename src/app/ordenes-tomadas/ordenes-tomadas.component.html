@@ -29,17 +29,19 @@
             <h3 style="font-weight: bold;">Ordenes Tomadas</h3>
         </div>
         <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" (click) = "mostrarModalOrden(mostrarModal)">
-                <div id="orden-tomada" class="estilo-btn-perfil">
-                    <fa-icon [icon]="faShippingFast"></fa-icon>
-                </div>
-                <div class="contenido-card-orden">
-                    <span>Codigo: 0000001</span>
-                    <span>Nombre: Lucas Gomez</span>
-                    <span>Estado: pendiente</span>
-                </div>
-                <div class="precio-card-orden">
-                    <span style="font-size: 18px;" class="mb-1">L. 230.00</span>
+            <div class="mb-2" *ngFor="let item of ordenesTomadas">
+                <div class="card-body" id="card-orden" (click) = "mostrarModalOrden(mostrarModal, item)">
+                    <div id="orden-tomada" class="estilo-btn-perfil">
+                        <fa-icon [icon]="faShippingFast"></fa-icon>
+                    </div>
+                    <div class="contenido-card-orden">
+                        <span>Codigo: {{item.codigo}}</span>
+                        <span>Nombre: {{item.nombreCliente}}</span>
+                        <span>Estado: {{item.estado}}</span>
+                    </div>
+                    <div class="precio-card-orden">
+                        <span style="font-size: 18px;" class="mb-1 font-weight-bold">{{item.total | currency}}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,7 +50,7 @@
 
 <ng-template #mostrarModal let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Orden 0000001</h4>
+        <h4 class="modal-title" id="modal-basic-title">Orden {{detalleOrden.codigo}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -56,19 +58,15 @@
     <div class="modal-body">
         <div class="modal-orden-tomada">
             <span><strong>Nombre del Cliente:</strong></span>
-            <span>Juan Ramirez</span>
+            <span>{{detalleOrden.nombreCliente}}</span>
         </div>
         <div class="modal-orden-tomada">
             <span><strong>Direccón:</strong></span>
-            <span style="padding-left: 55px;">Lorem ipsum dolor sit, amet consectetur adipisicing.</span>
-        </div>
-        <div class="modal-orden-tomada">
-            <span><strong>ISV:</strong></span>
-            <span>0.15</span>
+            <span style="padding-left: 55px;">{{detalleOrden.direccion}}</span>
         </div>
         <div class="modal-orden-tomada">
             <span><strong>Total:</strong></span>
-            <span>L. 340</span>
+            <span>{{detalleOrden.total}}</span>
         </div>
 
         <div id="botones-orden" class="py-4">

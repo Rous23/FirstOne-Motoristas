@@ -1,7 +1,7 @@
 <div id="header">
     <div id="logo-ajustes">
         <app-logo></app-logo>
-        <div id="configuracion"><i class="fas fa-user-cog"></i></div>
+        <div id="configuracion"><fa-icon [icon]="faUserCog"></fa-icon></div>
     </div>
     <div id="bienvenida">
         <p id="saludo">¡Hola Pancho!</p>
@@ -13,10 +13,10 @@
 </div>
 
 <main>
-    <div id="ver-disponibles">
+    <div id="ver-tomadas">
         <p style="font-weight: 800;">Ver ordenes disponibles</p>
         <div>
-            <i class="fas fa-chevron-right"></i>
+            <fa-icon [icon]="faChevronRight"></fa-icon>
         </div>
     </div>
 
@@ -25,69 +25,9 @@
             <h3 style="font-weight: bold;">Ordenes Tomadas</h3>
         </div>
         <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" data-bs-toggle="modal" data-bs-target="#mostarModal">
+            <div id="card-orden" class="mb-2" (click) = "mostrarModalOrden(mostrarModal)">
                 <div id="orden-tomada" class="estilo-btn-perfil">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <div class="contenido-card-orden">
-                    <span>Codigo: 0000001</span>
-                    <span>Nombre: Lucas Gomez</span>
-                    <span>Estado: pendiente</span>
-                </div>
-                <div class="precio-card-orden">
-                    <span style="font-size: 18px;" class="mb-1">L. 230.00</span>
-                </div>
-            </div>
-        </div>
-        <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" data-bs-toggle="modal" data-bs-target="#mostarModal">
-                <div id="orden-tomada" class="estilo-btn-perfil">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <div class="contenido-card-orden">
-                    <span>Codigo: 0000001</span>
-                    <span>Nombre: Lucas Gomez</span>
-                    <span>Estado: pendiente</span>
-                </div>
-                <div class="precio-card-orden">
-                    <span style="font-size: 18px;" class="mb-1">L. 230.00</span>
-                </div>
-            </div>
-        </div>
-        <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" data-bs-toggle="modal" data-bs-target="#mostarModal">
-                <div id="orden-tomada" class="estilo-btn-perfil">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <div class="contenido-card-orden">
-                    <span>Codigo: 0000001</span>
-                    <span>Nombre: Lucas Gomez</span>
-                    <span>Estado: pendiente</span>
-                </div>
-                <div class="precio-card-orden">
-                    <span style="font-size: 18px;" class="mb-1">L. 230.00</span>
-                </div>
-            </div>
-        </div>
-        <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" data-bs-toggle="modal" data-bs-target="#mostarModal">
-                <div id="orden-tomada" class="estilo-btn-perfil">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <div class="contenido-card-orden">
-                    <span>Codigo: 0000001</span>
-                    <span>Nombre: Lucas Gomez</span>
-                    <span>Estado: pendiente</span>
-                </div>
-                <div class="precio-card-orden">
-                    <span style="font-size: 18px;" class="mb-1">L. 230.00</span>
-                </div>
-            </div>
-        </div>
-        <div id="cards-ordenes-tomadas">
-            <div id="card-orden" class="mb-2" data-bs-toggle="modal" data-bs-target="#mostarModal">
-                <div id="orden-tomada" class="estilo-btn-perfil">
-                    <i class="fas fa-shipping-fast"></i>
+                    <fa-icon [icon]="faShippingFast"></fa-icon>
                 </div>
                 <div class="contenido-card-orden">
                     <span>Codigo: 0000001</span>
@@ -101,3 +41,41 @@
         </div>
     </div>
 </main>
+
+<ng-template #mostrarModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Orden 0000001</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-orden-tomada">
+            <span><strong>Nombre del Cliente:</strong></span>
+            <span>Juan Ramirez</span>
+        </div>
+        <div class="modal-orden-tomada">
+            <span><strong>Direccón:</strong></span>
+            <span style="padding-left: 55px;">Lorem ipsum dolor sit, amet consectetur adipisicing.</span>
+        </div>
+        <div class="modal-orden-tomada">
+            <span><strong>ISV:</strong></span>
+            <span>0.15</span>
+        </div>
+        <div class="modal-orden-tomada">
+            <span><strong>Total:</strong></span>
+            <span>L. 340</span>
+        </div>
+
+        <div id="botones-orden" class="py-4">
+            <button type="button" class="btn btn-primary mx-1">Tomar Orden</button>
+            <button type="button" class="btn btn-primary mx-1" style="background-color: rgba(138, 128, 253, .20);color: black;">En camino</button>
+            <button type="button" class="btn btn-primary mx-1">En origen</button>
+            <button type="button" class="btn btn-primary mx-1">En destino</button>
+        </div>
+
+        <div class="modal-footer-orden-tomada">
+            <button type="button" style="border-radius: 20px;" class="btn btn-outline-dark" (click)="modal.close('cerrar modal')">Cerrar</button>
+        </div>
+    </div>
+</ng-template>

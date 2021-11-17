@@ -12,8 +12,8 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { SolicitudRegistroComponent } from './solicitud-registro/solicitud-registro.component';
 import { OrdenesDisponiblesComponent } from './ordenes-disponibles/ordenes-disponibles.component';
 import { LogoComponent } from './logo/logo.component';
-import { ModalOrdenTomadaComponent } from './modal-orden-tomada/modal-orden-tomada.component';
 import { OrdenesTomadasComponent } from './ordenes-tomadas/ordenes-tomadas.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,13 +26,13 @@ import { OrdenesTomadasComponent } from './ordenes-tomadas/ordenes-tomadas.compo
     SolicitudRegistroComponent,
     OrdenesDisponiblesComponent,
     LogoComponent,
-    ModalOrdenTomadaComponent,
     OrdenesTomadasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -122,7 +122,7 @@ main {
     border-bottom-left-radius: 35px;
     border-bottom-right-radius: 35px;
     padding: 10px 20px;
-    height: 180px!important;
+    height: 160px!important;
 }
 
 #barra-perfil{
@@ -141,9 +141,9 @@ main {
 
 #contenedor-principal-perfil{
     background-color: white;
-    border: 1 solid #c0c0c0;
+    border: 0.0px solid #c0c0c0;
     border-radius: 8px;
-    box-shadow: 0px 5px 10px rgb(223, 222, 222);
+    box-shadow: 0px 0px 10px rgb(223, 222, 222);
     width: 100%;
 }
 
@@ -161,8 +161,8 @@ main {
     display: flex;
     color: #8A80FD;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
+    align-items: flex-end;
+    padding-bottom: 25px;
 }
 
 #texto-ir-ordendes{
@@ -180,8 +180,9 @@ main {
     background-color: #8A80FD;
     width: 30px;
     height: 30px;
-    color: white;
+    color: black;
     border-radius: 100%;
+    padding-left: 25px;
 }
 
 #main-perfil{
@@ -298,6 +299,11 @@ body{
     justify-content: center!important;
     padding: 30px 0px;
 }
+.modal-footer-orden-tomada{
+    display: flex;
+    border-radius: 20px;
+    justify-content: center!important;
+}
 
 .modal-content{
     border-radius: 20px!important;
@@ -313,6 +319,7 @@ body{
 #botones-orden{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .item-empresa{

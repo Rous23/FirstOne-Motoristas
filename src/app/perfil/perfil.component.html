@@ -1,7 +1,7 @@
 <div id="header-perfil">
     <div id="barra-perfil" class="py-2">
         <div id="flecha-atras">
-            <i class="fas fa-arrow-left" style="color: #8A80FD;font-size:.85rem; margin-left: 10px;"></i>
+            <fa-icon [icon] = "faArrowLeft" style="color: #8A80FD;font-size:.85rem; margin-left: 10px;"></fa-icon>
         </div>
     </div>
     <div id="informacion-perfil">
@@ -15,32 +15,32 @@
     </div>
 </div>
 <main id="main-perfil">
-    <div id="contenedor-principal-perfil" class="mt-2 mb-5" style="display: block;">
+    <div id="contenedor-principal-perfil" class="mt-2 mb-5">
         <div class="m-3">
             <h5 style="text-align: left;font-weight: bold;" class="pb-3">Mi Cuenta</h5>
             <div id="datos-personales" class="items-perfil">
                 <div>
-                    <i class="fas fa-address-card"></i>
+                    <fa-icon [icon] = "faAddressCard"></fa-icon>
                 </div>
                 <div>Datos Personales</div>
                 <div style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalDatos">
-                    <i class="far fa-edit"></i>
+                    <fa-icon [icon] = "faEdit"></fa-icon>
                 </div>
             </div>
             <h5 style="text-align: left;font-weight: bold;" class="pb-3 pt-4">Seguridad</h5>
             <div id="cambio-contrasenia" class="items-perfil">
                 <div>
-                    <i class="fas fa-key"></i>
+                    <fa-icon [icon] = "faKey"></fa-icon>
                 </div>
                 <div>Cambiar Contraseña</div>
                 <div style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalContrasenia">
-                    <i class="far fa-edit"></i>
+                    <fa-icon [icon] = "faEdit"></fa-icon>
                 </div>
             </div>
             <h5 style="text-align: left;font-weight: bold;" class="pb-3 pt-4">Otras Acciones</h5>
             <div id="cerrar-sesion" class="items-perfil" style="justify-content: space-around;">
                 <div>
-                    <i class="fas fa-sign-out-alt"></i>
+                    <fa-icon [icon] = "faSingOutAlt"></fa-icon>
                 </div>
                 <div>Cerrar sesión</div>
             </div>
@@ -49,5 +49,5 @@
 </main>
 <div id="ir-ordenes" class="fixed-bottom">
     <p id="texto-ir-ordendes">Ir a ordenes</p>
-    <i class="fas fa-chevron-right" id="icono-ir-ordenes"></i>
+    <fa-icon [icon] = "faChevronRight" class="icono-ir-ordenes"></fa-icon>
 </div>

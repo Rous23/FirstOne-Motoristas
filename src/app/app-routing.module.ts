@@ -13,9 +13,9 @@ const routes: Routes = [
   {path: 'iniciar-sesion', component: IniciarSesionComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'registrarse', component: RegistrarseComponent},
-  {path: 'solicitud-registro', component: SolicitudRegistroComponent},
+  {path: '', component: SolicitudRegistroComponent},
   {path: 'ordenes-disponibles', component: OrdenesDisponiblesComponent},
-  {path: '', component: OrdenesTomadasComponent},
+  {path: 'ordenes-tomadas', component: OrdenesTomadasComponent},
 ];
 
 @NgModule({

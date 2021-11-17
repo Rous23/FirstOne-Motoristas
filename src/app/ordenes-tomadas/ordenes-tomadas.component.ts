@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ordenes-tomadas.component.css']
 })
 export class OrdenesTomadasComponent implements OnInit {
-
+  
   constructor(private modalService:NgbModal) { }//esta inyectando un objeto de tipo ng modal puedo acceder desde cualquier metodo de la clase haciendo esto
 
   ngOnInit(): void {

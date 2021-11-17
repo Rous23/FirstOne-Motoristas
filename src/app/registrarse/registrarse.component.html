@@ -5,29 +5,48 @@
     </div>
     <div id="texto-principal">Registrarse como Motorista</div>
     <div id="formulario-registro-motorista">
-        <form>
+        <form [formGroup]="formRegistro">
             <div class="form-group">
                 <label class="labels" id="label-nombre" for="input-nombre">Nombre Completo</label>
-                <input id="input-nombre" type="text" class="form-control" placeholder="Nombre Completo">
+                <input formControlName="nombreCompleto" id="input-nombre" type="text" class="form-control" placeholder="Nombre Completo" [ngClass]="{'is-invalid': nombreCompleto.invalid && (nombreCompleto.dirty || nombreCompleto.touched), 'is-valid': nombreCompleto.valid}">
+                <div *ngIf="nombreCompleto.invalid && (nombreCompleto.dirty || nombreCompleto.touched)" style="color: red;">
+                    <span *ngIf="nombreCompleto.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="nombreCompleto.errors.maxlength">Maximo de carcteres alcanzados.</span>
+                </div>
             </div>
             <div class="form-group">
-                <label class="labels" id="label-fecha-nacimiento" for="fecha-nacimiento">Fecha Nacimiento</label>
-                <input id="input-fecha-nacimiento" type="date" class="form-control" id="fecha-nacimiento" placeholder="Nombre Completo">
+                <label class="labels" id="label-fecha-nacimiento" for="input-fecha-nacimiento">Fecha Nacimiento</label>
+                <input formControlName="fechaNacimiento" id="input-fecha-nacimiento" type="date" class="form-control" placeholder="Nombre Completo" [ngClass]="{'is-invalid': fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched), 'is-valid': fechaNacimiento.valid}">
+                <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)" style="color: red;">
+                    <span *ngIf="fechaNacimiento.errors.required">El campo es obligatorio</span>
+                </div>
             </div>
             <div class="form-group">
                 <label class="labels" id="label-correo" for="input-correo">Correo electrónico</label>
-                <input id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+                <input formControlName="correo" id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" [ngClass]="{'is-invalid': correo.invalid && (correo.dirty || correo.touched), 'is-valid': correo.valid}">
+                <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" style="color: red;">
+                    <span *ngIf="correo.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="correo.errors.pattern">El correo no es válido</span>
+                </div>
             </div>
             <div class="form-group">
                 <label class="labels" id="label-contrasenia" for="input-contrasenia">Contraseña</label>
-                <input id="input-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                <input formControlName="password" id="input-contrasenia" type="password" class="form-control" placeholder="contraseña" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched), 'is-valid': password.valid}">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">
+                    <span *ngIf="password.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="password.errors.minlength">La contraseña no es correcta.</span>
+                </div>
             </div>
             <div class="form-group">
                 <label class="labels" id="label-repetir-contrasenia" for="input-repetir-contrasenia">Contraseña</label>
-                <input id="input-repetir-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                <input formControlName="password2" id="input-repetir-contrasenia" type="password" class="form-control" placeholder="contraseña" [ngClass]="{'is-invalid': password2.invalid && (password2.dirty || password2.touched), 'is-valid': password2.valid}">
+                <div *ngIf="password2.invalid && (password2.dirty || password2.touched)" style="color: red;">
+                    <span *ngIf="password2.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="password2.errors.minlength">La contraseña no es correcta.</span>
+                </div>
             </div>
             <div>
-                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" [routerLink]="['/ordenes-disponibles']" routerLinkActive="router-link-active" >Registrate</button>
+                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" (click)="registrarUsuario()" [disabled] = "!formRegistro.valid">Registrate</button>
             </div>
             <div id="crear-cuenta-texto">
                 <h6>¿Ya tienes cuenta? </h6>

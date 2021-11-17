@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faAddressCard, faArrowLeft, faChevronRight, faEdit, faKey, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-perfil',
@@ -8,7 +9,7 @@ import { faAddressCard, faArrowLeft, faChevronRight, faEdit, faKey, faSignOutAlt
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService:NgbModal) { }
   faChevronRight = faChevronRight
   faAddressCard = faAddressCard
   faEdit = faEdit
@@ -17,5 +18,16 @@ export class PerfilComponent implements OnInit {
   faArrowLeft = faArrowLeft
   ngOnInit(): void {
   }
-
+  abrirModalInformacion(modal){
+    this.modalService.open(modal,{
+      size:'lg',
+      centered:true
+    })
+  }
+  abrirModalPassword(modal){
+    this.modalService.open(modal,{
+      size:'lg',
+      centered:true
+    })
+  }
 }

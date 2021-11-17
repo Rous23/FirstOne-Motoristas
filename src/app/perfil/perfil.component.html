@@ -1,6 +1,6 @@
 <div id="header-perfil">
     <div id="barra-perfil" class="py-2">
-        <div id="flecha-atras">
+        <div id="flecha-atras" [routerLink]="['/ordenes-disponibles']" routerLinkActive="router-link-active" >
             <fa-icon [icon] = "faArrowLeft" style="color: #8A80FD;font-size:.85rem; margin-left: 10px;"></fa-icon>
         </div>
     </div>
@@ -8,7 +8,7 @@
         <div id="imagen-perfil" style="width: 75px;">
             <img src="../../assets/img/user.png" alt="" style="width: 100%;">
         </div>
-        <div id="datos-perfil" class="py-2 pt-2 px-4" style="flex:2">
+        <div id="datos-perfil" class="py-2 pt-2 px-4">
             <h4 style="font-weight: bold;margin-bottom: 0rem;">Pancho Rivera</h4>
             <span>ejemplo@gmail.com</span>
         </div>
@@ -23,7 +23,7 @@
                     <fa-icon [icon] = "faAddressCard"></fa-icon>
                 </div>
                 <div>Datos Personales</div>
-                <div style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalDatos">
+                <div style="cursor:pointer" (click)="abrirModalInformacion(modalInformacion)">
                     <fa-icon [icon] = "faEdit"></fa-icon>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <fa-icon [icon] = "faKey"></fa-icon>
                 </div>
                 <div>Cambiar Contraseña</div>
-                <div style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalContrasenia">
+                <div style="cursor:pointer" (click) = "abrirModalPassword(content)">
                     <fa-icon [icon] = "faEdit"></fa-icon>
                 </div>
             </div>
@@ -51,3 +51,63 @@
     <p id="texto-ir-ordendes" [routerLink]="['/ordenes-disponibles']" routerLinkActive="router-link-active" >Ir a ordenes</p>
     <fa-icon [icon] = "faChevronRight" class="icono-ir-ordenes"></fa-icon>
 </div>
+
+<ng-template #modalInformacion let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Datos Personales</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div id="formulario-actualizar-datos" class="form-modal">
+            <form>
+                <div class="form-group">
+                    <label id="label-nombre" for="input-nombre">Nombre Completo</label>
+                    <input id="input-nombre" type="text" class="form-control" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group">
+                    <label id="label-fecha-nacimiento" for="input-fecha-nacimiento">Fecha Nacimiento</label>
+                    <input id="input-fecha-nacimiento" type="date" class="form-control" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group">
+                    <label id="label-correo" for="input-correo">Correo electrónico</label>
+                    <input id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+                </div>
+            </form>
+        </div>
+        
+        <div style="display: flex;justify-content: center;" class="py-3">
+            <button id="cerrar-formulario" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar modal')">Cerrar</button>
+            <button id="actualizar-info" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar modal')">Guardar cambios</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Cambiar Contraseña</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div id="formulario-actualizar-contrasenia" class="form-modal">
+            <form>
+                <div class="form-group">
+                    <label id="label-contrasenia" for="input-contrasenia">Nueva Contraseña</label>
+                    <input id="input-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                </div>
+                <div class="form-group">
+                    <label id="label-repetir-contrasenia" for="input-repetir-contrasenia">Verificar contraseña</label>
+                    <input id="input-repetir-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                </div>
+            </form>
+        </div>
+        <div style="display: flex;justify-content: center;" class="py-3">
+            <button id="cerrar-formulario" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar')">Cerrar</button>
+            <button id="actualizar-contraseña" type="button" class="btn btn-primary mx-2">Guardar contraseña</button>
+        </div>
+    </div>
+</ng-template>
+

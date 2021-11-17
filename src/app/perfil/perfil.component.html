@@ -38,8 +38,8 @@
                 </div>
             </div>
             <h5 style="text-align: left;font-weight: bold;" class="pb-3 pt-4">Otras Acciones</h5>
-            <div id="cerrar-sesion" class="items-perfil" style="justify-content: space-around;">
-                <div>
+            <div id="cerrar-sesion" class="items-perfil" style="justify-content: space-around;" [routerLink]="['/iniciar-sesion']" routerLinkActive="router-link-active" >
+                <div >
                     <fa-icon [icon] = "faSingOutAlt"></fa-icon>
                 </div>
                 <div>Cerrar sesión</div>
@@ -48,6 +48,6 @@
     </div>
 </main>
 <div id="ir-ordenes" class="fixed-bottom">
-    <p id="texto-ir-ordendes">Ir a ordenes</p>
+    <p id="texto-ir-ordendes" [routerLink]="['/ordenes-disponibles']" routerLinkActive="router-link-active" >Ir a ordenes</p>
     <fa-icon [icon] = "faChevronRight" class="icono-ir-ordenes"></fa-icon>
 </div>

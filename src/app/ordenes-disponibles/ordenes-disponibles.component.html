@@ -12,11 +12,13 @@
     </div>
 </div>
 <main>
-    <div id="ver-disponibles">
-        <p style="font-weight: 800;">Ver ordenes disponibles</p>
-        <div>
-            <fa-icon [icon] = "faChevronRight"></fa-icon>
-        </div>
+    <div id="ver-tomadas">
+        <a style="font-weight: 800;display: flex;color: #8A80FD!important;" [routerLink]="['/ordenes-tomadas']" routerLinkActive="router-link-active" >
+            <div class="pr-2">Ver ordenes tomadas</div>
+            <div>
+                <fa-icon [icon] = "faChevronRight"></fa-icon>
+            </div>
+        </a>
     </div>
     <div>
         <div style="text-align: start;" class="py-3">

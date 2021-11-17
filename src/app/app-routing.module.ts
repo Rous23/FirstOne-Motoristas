@@ -9,11 +9,11 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { SolicitudRegistroComponent } from './solicitud-registro/solicitud-registro.component';
 
 const routes: Routes = [
-  {path: 'informativo', component: InfromativoComponent},
+  {path: '', component: InfromativoComponent},
   {path: 'iniciar-sesion', component: IniciarSesionComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'registrarse', component: RegistrarseComponent},
-  {path: '', component: SolicitudRegistroComponent},
+  {path: 'solicitud-registro', component: SolicitudRegistroComponent},
   {path: 'ordenes-disponibles', component: OrdenesDisponiblesComponent},
   {path: 'ordenes-tomadas', component: OrdenesTomadasComponent},
 ];

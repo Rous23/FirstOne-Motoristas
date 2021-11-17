@@ -289,8 +289,8 @@ body{
 
 #ver-disponibles, #ver-tomadas{
     display: flex;
-    justify-content: space-between;
-    color: #8A80FD;
+    justify-content: flex-end;
+    color: #8A80FD!important;
 }
 
 .modal-footer{
@@ -327,4 +327,9 @@ body{
     width: calc((100% - 10px)/2);
     display: flex;
     cursor: pointer;
+}
+
+.all-btn:disabled{
+    background-color: #8a80fdce;
+    border: #8a80fdce;
 }

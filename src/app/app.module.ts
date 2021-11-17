@@ -14,7 +14,7 @@ import { OrdenesDisponiblesComponent } from './ordenes-disponibles/ordenes-dispo
 import { LogoComponent } from './logo/logo.component';
 import { OrdenesTomadasComponent } from './ordenes-tomadas/ordenes-tomadas.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

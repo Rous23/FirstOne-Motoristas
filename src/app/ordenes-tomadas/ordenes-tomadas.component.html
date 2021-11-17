@@ -1,7 +1,7 @@
 <div id="header">
     <div id="logo-ajustes">
         <app-logo></app-logo>
-        <div id="configuracion"><fa-icon [icon]="faUserCog"></fa-icon></div>
+        <div id="configuracion" [routerLink]="['/perfil']" routerLinkActive="router-link-active" ><fa-icon [icon]="faUserCog"></fa-icon></div>
     </div>
     <div id="bienvenida">
         <p id="saludo">¡Hola Pancho!</p>
@@ -13,11 +13,13 @@
 </div>
 
 <main>
-    <div id="ver-tomadas">
-        <p style="font-weight: 800;">Ver ordenes disponibles</p>
-        <div>
-            <fa-icon [icon]="faChevronRight"></fa-icon>
-        </div>
+    <div id="ver-disponibles">
+        <a style="font-weight: 800;display: flex;color: #8A80FD!important;" [routerLink]="['/ordenes-disponibles']" routerLinkActive="router-link-active" >
+            <div class="pr-2">Ver ordenes Disponibles</div>
+            <div>
+                <fa-icon [icon] = "faChevronRight"></fa-icon>
+            </div>
+        </a>
     </div>
 
     <div>

@@ -3,22 +3,30 @@
     <app-logo></app-logo>
     <div id="texto-principal">Iniciar Sesión Motorista</div>
     <div id="formulario-iniciar-sesion">
-        <form>
+        <form [formGroup]="formularioLogin">
             <div class="form-group">
                 <label id="label-correo" for="input-correo" class="labels">Correo electrónico</label>
-                <input id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+                <input formControlName="correo" id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" [ngClass]="{'is-invalid': correo.invalid && (correo.dirty || correo.touched), 'is-valid': correo.valid}" required>
+                <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" style="color: red;">
+                    <span *ngIf="correo.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="correo.errors.pattern">El correo no es válido</span>
+                </div>
             </div>
             <div class="form-group">
                 <label id="label-contrasenia" for="input-contrasenia" class="labels">Contraseña</label>
-                <input id="input-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                <input formControlName="password" id="input-contrasenia" type="password" class="form-control" placeholder="contraseña" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched), 'is-valid': password.valid}" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">
+                    <span *ngIf="password.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="password.errors.minlength">La contraseña no es correcta.</span>
+                </div>
             </div>
             <div id="recuperar-contrasenia">¿Has olvidado tu contraseña?</div>
             <div>
-                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" href="#">Iniciar Sesión</button>
+                <button id="boton-iniciar-sesion" type="button" class="btn btn-primary all-btn" (click)="iniciarSesion()" [disabled] = "!formularioLogin.valid">Iniciar Sesión</button>
             </div>
             <div id="crear-cuenta-texto">
                 <h6>¿Aún no tienes cuenta? </h6>
-                <h6 id="crear-cuenta">Crea una aquí</h6>
+                <a id="crear-cuenta" href="/registrarse">Crea una aquí</a>
             </div>
         </form>
     </div>

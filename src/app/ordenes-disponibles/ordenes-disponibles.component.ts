@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faChevronRight, faShippingFast, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { MotoristasService } from '../services/motoristas.service';
+import { OrdenesDisponiblesService } from '../services/ordenes-disponibles.service';
 
 @Component({
   selector: 'app-ordenes-disponibles',
@@ -8,90 +11,26 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ordenes-disponibles.component.css']
 })
 export class OrdenesDisponiblesComponent implements OnInit {
-  ordenesDisponibles = [
-    {
-      codigo: '000001',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    },
-    {
-      codigo: '000002',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    },
-    {
-      codigo: '000003',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    },
-    {
-      codigo: '000004',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    },
-    {
-      codigo: '000005',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    },
-    {
-      codigo: '000006',
-      nombreCliente: 'Francisca Ramirez',
-      direccion: "Col. 3 de mayo",
-      horaEmision: "12:00",
-      productos: [
-        {
-          nombre: "pizza",
-          cantidad: 2,
-        }
-      ],
-      total:200
-    }
-  ];
+  ordenesDisponibles:any=[]
   detalleOrden:any;
-  constructor(private modalService:NgbModal) { }
+  cookieValue:string;
+
+  constructor(
+    private modalService:NgbModal,
+    private ordesDisponiblesService:OrdenesDisponiblesService,
+    private motoristaService:MotoristasService,
+    private cookieService:CookieService
+    ) { }
 
   ngOnInit(): void {
+    this.cookieValue = this.cookieService.get('idMotoristaFirstone');
+    this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
+      res=>{
+        console.log(res);
+        this.ordenesDisponibles = res
+      },
+      error=>console.error(error)
+    )
   }
   faUserCog = faUserCog
   faChevronRight = faChevronRight
@@ -106,9 +45,25 @@ export class OrdenesDisponiblesComponent implements OnInit {
     );
     this.detalleOrden = item;
   }
-  tomarOrden(){
+  tomarOrden(item){
     this.modalService.dismissAll()
     console.log("tomar orden");
+    this.motoristaService.guardarOrden(this.cookieValue,item._id).subscribe(
+      res=>{
+        console.log(res);
+        if (res.modifiedCount==1) {
+          this.ordesDisponiblesService.().subscribe(
+            res=>{
+              console.log(res);
+              this.ordenesDisponibles = res
+            },
+            error=>console.error(error)
+          )
+        }
+      },
+      error=>console.error(error)
+    )
     
   }
+
 }

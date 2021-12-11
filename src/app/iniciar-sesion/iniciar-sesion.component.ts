@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { MotoristasService } from '../services/motoristas.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -25,12 +27,21 @@ export class IniciarSesionComponent implements OnInit {
       )
     }
   );
+  cookieValue:string;
+  error=false;
   constructor(
-    private route:Router,
+    private route:Router, 
+    private cookieService:CookieService,
+    private motoristasService:MotoristasService
   ) { }
   faGoogle = faGoogle
   faFacebookF = faFacebookF
   ngOnInit(): void {
+
+    this.motoristasService.obtenerMotoristas().subscribe(
+      res=>console.log(res),
+      error=>console.error(error)
+    )
   }
 
   get correo(){
@@ -40,11 +51,23 @@ export class IniciarSesionComponent implements OnInit {
   get password(){
     return this.formularioLogin.get('password')
   }
-
+  
   iniciarSesion(){
     console.log(this.formularioLogin.value);
-    console.log(this.formularioLogin.valid);
-    this.route.navigate(['/ordenes-disponibles']);
+    this.motoristasService.iniciarSesion(this.formularioLogin.value).subscribe(
+      res=>{
+        console.log(res);
+        if(res!=null){
+          this.cookieService.set('idMotoristaFirstone', res._id);
+          this.route.navigate(['/ordenes-disponibles']);
+        }else{
+          this.error=true
+          this.correo.setValue('');
+          this.password.setValue('');
+        }
+      },
+      error=>console.error(error)
+    )
+    //this.cookieValue = this.cookieService.get('idMotoristaFirstone');
   }
-
 }

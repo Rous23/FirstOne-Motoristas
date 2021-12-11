@@ -7,11 +7,27 @@
     <div id="formulario-registro-motorista">
         <form [formGroup]="formRegistro">
             <div class="form-group">
-                <label class="labels" id="label-nombre" for="input-nombre">Nombre Completo</label>
-                <input formControlName="nombreCompleto" id="input-nombre" type="text" class="form-control" placeholder="Nombre Completo" [ngClass]="{'is-invalid': nombreCompleto.invalid && (nombreCompleto.dirty || nombreCompleto.touched), 'is-valid': nombreCompleto.valid}">
-                <div *ngIf="nombreCompleto.invalid && (nombreCompleto.dirty || nombreCompleto.touched)" style="color: red;">
-                    <span *ngIf="nombreCompleto.errors.required">El campo es obligatorio</span>
-                    <span *ngIf="nombreCompleto.errors.maxlength">Maximo de carcteres alcanzados.</span>
+                <label class="labels" id="label-nombres" for="input-nombres">Nombres</label>
+                <input formControlName="nombres" id="input-nombres" type="text" class="form-control" placeholder="Nombres" [ngClass]="{'is-invalid': nombres.invalid && (nombres.dirty || nombres.touched), 'is-valid': nombres.valid}">
+                <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" style="color: red;">
+                    <span *ngIf="nombres.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="nombres.errors.maxlength">Maximo de carcteres alcanzados.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="labels" id="label-apellidos" for="input-nombres">Apellidos</label>
+                <input formControlName="apellidos" id="input-apellidos" type="text" class="form-control" placeholder="Apellidos" [ngClass]="{'is-invalid': apellidos.invalid && (apellidos.dirty || apellidos.touched), 'is-valid': apellidos.valid}">
+                <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" style="color: red;">
+                    <span *ngIf="apellidos.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="apellidos.errors.maxlength">Maximo de carcteres alcanzados.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="labels" id="label-usuario" for="input-usuario">Usuario</label>
+                <input formControlName="usuario" id="input-usuario" type="text" class="form-control" placeholder="@usuario" [ngClass]="{'is-invalid': usuario.invalid && (usuario.dirty || usuario.touched), 'is-valid': usuario.valid}">
+                <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)" style="color: red;">
+                    <span *ngIf="usuario.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="usuario.errors.maxlength">Maximo de carcteres alcanzados.</span>
                 </div>
             </div>
             <div class="form-group">
@@ -19,6 +35,31 @@
                 <input formControlName="fechaNacimiento" id="input-fecha-nacimiento" type="date" class="form-control" placeholder="Nombre Completo" [ngClass]="{'is-invalid': fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched), 'is-valid': fechaNacimiento.valid}">
                 <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)" style="color: red;">
                     <span *ngIf="fechaNacimiento.errors.required">El campo es obligatorio</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="labels" id="label-genero" for="input-genero">Genero</label>
+                <select class="browser-default custom-select form-control" id="input-genero" formControlName="genero" [ngClass]="{'is-invalid': genero.invalid && (genero.dirty || genero.touched), 'is-valid': genero.valid}">
+                    <option selected="true" disabled>seleccione su genero</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+                <div *ngIf="genero.invalid && (genero.dirty || genero.touched)" style="color: red;">
+                    <span *ngIf="genero.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="genero.errors.maxlength">Maximo de carcteres alcanzados.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="labels" id="label-telefono" for="input-telefono">Telefono</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1" style="background-color: transparent; border-color: rgba(254, 185, 73, 0.5);border-width: 2px;padding: 0.3rem; color: grey">+504</span>
+                    </div>
+                    <input formControlName="telefono" id="input-telefono" type="text" class="form-control" placeholder="9999-9999" [ngClass]="{'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched), 'is-valid': telefono.valid}">
+                </div>               
+                <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" style="color: red;">
+                    <span *ngIf="telefono.errors.required">El campo es obligatorio</span>
+                    <span *ngIf="telefono.errors.maxlength">Maximo de carcteres alcanzados.</span>
                 </div>
             </div>
             <div class="form-group">

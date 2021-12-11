@@ -22,14 +22,27 @@ export class OrdenesDisponiblesComponent implements OnInit {
     private cookieService:CookieService
     ) { }
 
+  nombreMotorista:String;
+
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('idMotoristaFirstone');
+    console.log(this.cookieValue);
     this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
       res=>{
         console.log(res);
         this.ordenesDisponibles = res
       },
       error=>console.error(error)
+    );
+    this.motoristaService.obtenerMotorista(this.cookieService.get('idMotoristaFirstone')).subscribe(
+      res=>{
+        console.log(res.nombres);
+        this.nombreMotorista = res.nombres
+        //this.spinnerService.hide();
+      },
+      error=>{
+        console.error(error);
+      }
     )
   }
   faUserCog = faUserCog
@@ -47,12 +60,11 @@ export class OrdenesDisponiblesComponent implements OnInit {
   }
   tomarOrden(item){
     this.modalService.dismissAll()
-    console.log("tomar orden");
     this.motoristaService.guardarOrden(this.cookieValue,item._id).subscribe(
       res=>{
         console.log(res);
         if (res.modifiedCount==1) {
-          this.ordesDisponiblesService.().subscribe(
+          this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
             res=>{
               console.log(res);
               this.ordenesDisponibles = res

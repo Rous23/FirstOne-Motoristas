@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faChevronRight, faShippingFast, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,41 +15,43 @@ export class OrdenesDisponiblesComponent implements OnInit {
   ordenesDisponibles:any=[]
   detalleOrden:any;
   cookieValue:string;
-
   constructor(
     private modalService:NgbModal,
     private ordesDisponiblesService:OrdenesDisponiblesService,
     private motoristaService:MotoristasService,
-    private cookieService:CookieService
-    ) { }
-
+    private cookieService:CookieService,
+    private route:Router
+    ) {}
   nombreMotorista:String;
-
   ngOnInit(): void {
-    this.cookieValue = this.cookieService.get('idMotoristaFirstone');
-    console.log(this.cookieValue);
-    this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
-      res=>{
-        console.log(res);
-        this.ordenesDisponibles = res
-      },
-      error=>console.error(error)
-    );
-    this.motoristaService.obtenerMotorista(this.cookieService.get('idMotoristaFirstone')).subscribe(
-      res=>{
-        console.log(res.nombres);
-        this.nombreMotorista = res.nombres
-        //this.spinnerService.hide();
-      },
-      error=>{
-        console.error(error);
-      }
-    )
+    if (this.cookieService.get('idMotoristaFirstone')) {
+      this.cookieValue = this.cookieService.get('idMotoristaFirstone');
+      this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
+        res=>{
+          console.log(res);
+          this.ordenesDisponibles = res
+        },
+        error=>console.error(error)
+      );
+      this.motoristaService.obtenerMotorista(this.cookieService.get('idMotoristaFirstone')).subscribe(
+        res=>{
+          console.log(res.nombres);
+          this.nombreMotorista = res.nombres
+          //this.spinnerService.hide();
+        },
+        error=>{
+          console.error(error);
+        }
+      )
+    }else {
+      this.route.navigate(['/iniciar-sesion'])
+    }
+
+
   }
   faUserCog = faUserCog
   faChevronRight = faChevronRight
   faShippingFast = faShippingFast
-  
   mostrarModalOrden(mostrarModal,item){
     this.modalService.open(mostrarModal,
       {
@@ -59,23 +62,34 @@ export class OrdenesDisponiblesComponent implements OnInit {
     this.detalleOrden = item;
   }
   tomarOrden(item){
-    this.modalService.dismissAll()
-    this.motoristaService.guardarOrden(this.cookieValue,item._id).subscribe(
+    let orden;
+    for (let i = 0; i < this.ordenesDisponibles.length; i++) {
+      if (item._id == this.ordenesDisponibles[i]._id) {
+        orden = this.ordenesDisponibles[i];
+      }
+    }
+
+    this.motoristaService.guardarOrden(this.cookieValue,orden).subscribe(
       res=>{
         console.log(res);
-        if (res.modifiedCount==1) {
-          this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
+        if (res.modifiedCount==1){
+          this.ordesDisponiblesService.borrarOrden(item._id).subscribe(
             res=>{
-              console.log(res);
-              this.ordenesDisponibles = res
+              console.log(res),
+              this.ordesDisponiblesService.obtenerOrdenesDisponibles().subscribe(
+                res=>{
+                  console.log(res);
+                  this.ordenesDisponibles = res;
+                },
+                error=>console.error(error)
+              )
             },
             error=>console.error(error)
           )
         }
       },
       error=>console.error(error)
-    )
-    
+    )        
+    this.modalService.dismissAll()
   }
-
 }

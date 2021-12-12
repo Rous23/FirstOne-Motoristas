@@ -6,11 +6,11 @@
     </div>
     <div id="informacion-perfil">
         <div id="imagen-perfil" style="width: 75px;">
-            <img src="../../assets/img/user.png" alt="" style="width: 100%;">
+            <img src="https://res.cloudinary.com/dekixopkw/image/upload/v1639033655/FirstOne/Clientes/yu6fnfkvgu6hhd9fmwii.png" alt="" style="width: 100%;">
         </div>
         <div id="datos-perfil" class="py-2 pt-2 px-4">
-            <h4 style="font-weight: bold;margin-bottom: 0rem;">Pancho Rivera</h4>
-            <span>ejemplo@gmail.com</span>
+            <h4 style="font-weight: bold;margin-bottom: 0rem;">{{nombres}}</h4>
+            <span>{{correo}}</span>
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <h5 style="text-align: left;font-weight: bold;" class="pb-3 pt-4">Otras Acciones</h5>
-            <div id="cerrar-sesion" class="items-perfil" style="justify-content: space-around;" [routerLink]="['/iniciar-sesion']" routerLinkActive="router-link-active" >
+            <div id="cerrar-sesion" class="items-perfil" style="justify-content: space-around;" (click)="cerrarSesion()">
                 <div >
                     <fa-icon [icon] = "faSingOutAlt"></fa-icon>
                 </div>
@@ -63,23 +63,31 @@
         <div id="formulario-actualizar-datos" class="form-modal">
             <form>
                 <div class="form-group">
-                    <label id="label-nombre" for="input-nombre">Nombre Completo</label>
-                    <input id="input-nombre" type="text" class="form-control" placeholder="Nombre Completo">
+                    <label id="label-nombre" for="input-nombres">Nombres</label>
+                    <input [(ngModel)]="usuario.nombres" id="input-nombres" type="text" class="form-control" placeholder="Nombres" name="nombres">
                 </div>
                 <div class="form-group">
-                    <label id="label-fecha-nacimiento" for="input-fecha-nacimiento">Fecha Nacimiento</label>
-                    <input id="input-fecha-nacimiento" type="date" class="form-control" placeholder="Nombre Completo">
+                    <label id="label-apellidos" for="input-apellidos">Apellidos</label>
+                    <input [(ngModel)]="usuario.apellidos" id="input-apellidos" type="text" class="form-control" placeholder="Apellidos" name="apellidos">
+                </div>
+                <div class="form-group">
+                    <label id="label-usuario" for="input-usuarios">Usuario</label>
+                    <input [(ngModel)]="usuario.usuario" id="input-usuarios" type="text" class="form-control" placeholder="Usuario" name="usuario">
                 </div>
                 <div class="form-group">
                     <label id="label-correo" for="input-correo">Correo electrónico</label>
-                    <input id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+                    <input [(ngModel)]="usuario.correo" id="input-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" name="correo">
+                </div>
+                <div class="form-group">
+                    <label id="label-telefnoo" for="input-telefono">Teléfono</label>
+                    <input [(ngModel)]="usuario.telefono" id="input-telefono" type="text" class="form-control" placeholder="ejemplo@gmail.com" name="telefono">
                 </div>
             </form>
         </div>
         
         <div style="display: flex;justify-content: center;" class="py-3">
             <button id="cerrar-formulario" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar modal')">Cerrar</button>
-            <button id="actualizar-info" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar modal')">Guardar cambios</button>
+            <button id="actualizar-info" type="button" class="btn btn-primary mx-2" (click)="actualizarMotorista()">Guardar cambios</button>
         </div>
     </div>
 </ng-template>
@@ -93,20 +101,20 @@
     </div>
     <div class="modal-body">
         <div id="formulario-actualizar-contrasenia" class="form-modal">
-            <form>
+            <form [formGroup]="formContrasena">
                 <div class="form-group">
                     <label id="label-contrasenia" for="input-contrasenia">Nueva Contraseña</label>
-                    <input id="input-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                    <input formControlName="contrasena" id="input-contrasenia" type="password" class="form-control" placeholder="contraseña" name="contrasena">
                 </div>
                 <div class="form-group">
                     <label id="label-repetir-contrasenia" for="input-repetir-contrasenia">Verificar contraseña</label>
-                    <input id="input-repetir-contrasenia" type="password" class="form-control" placeholder="contraseña">
+                    <input formControlName="contrasena2" id="input-repetir-contrasenia" type="password" class="form-control" placeholder="contraseña" name="contrasena2">
                 </div>
             </form>
         </div>
         <div style="display: flex;justify-content: center;" class="py-3">
             <button id="cerrar-formulario" type="button" class="btn btn-primary mx-2" (click)="modal.close('cerrar')">Cerrar</button>
-            <button id="actualizar-contraseña" type="button" class="btn btn-primary mx-2">Guardar contraseña</button>
+            <button id="actualizar-contraseña" type="button" class="btn btn-primary mx-2" (click)="actualizarContrasena()">Guardar contraseña</button>
         </div>
     </div>
 </ng-template>

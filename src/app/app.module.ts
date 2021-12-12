@@ -14,7 +14,7 @@ import { OrdenesDisponiblesComponent } from './ordenes-disponibles/ordenes-dispo
 import { LogoComponent } from './logo/logo.component';
 import { OrdenesTomadasComponent } from './ordenes-tomadas/ordenes-tomadas.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

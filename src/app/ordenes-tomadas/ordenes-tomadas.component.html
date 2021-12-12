@@ -6,7 +6,7 @@
         </div>
     </div>
     <div id="bienvenida">
-        <p id="saludo">¡Hola Pancho!</p>
+        <p id="saludo">¡Hola {{nombreMotorista}}!</p>
         <p style="font-weight: 700;">¿Listo para las entregas de hoy?</p>
         <div class="text-center mt-4" >
             <p>Aqui puedes visualizar las ordenes que has tomado.</p>
@@ -35,8 +35,8 @@
                         <fa-icon [icon]="faShippingFast"></fa-icon>
                     </div>
                     <div class="contenido-card-orden">
-                        <span>Codigo: {{item.codigo}}</span>
-                        <span>Nombre: {{item.nombreCliente}}</span>
+                        <span>Codigo: {{item._id}}</span>
+                        <span>Nombre: {{item.cliente.nombres}} {{item.cliente.apellidos}}</span>
                         <span>Estado: {{item.estado}}</span>
                     </div>
                     <div class="precio-card-orden">
@@ -50,7 +50,7 @@
 
 <ng-template #mostrarModal let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Orden {{detalleOrden.codigo}}</h4>
+        <h4 class="modal-title" id="modal-basic-title">Orden {{detalleOrden._id}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -58,24 +58,22 @@
     <div class="modal-body">
         <div class="modal-orden-tomada">
             <span><strong>Nombre del Cliente:</strong></span>
-            <span>{{detalleOrden.nombreCliente}}</span>
+            <span>{{detalleOrden.cliente.nombres}}</span>
         </div>
-        <div class="modal-orden-tomada">
+        <!-- <div class="modal-orden-tomada">
             <span><strong>Direccón:</strong></span>
             <span style="padding-left: 55px;">{{detalleOrden.direccion}}</span>
-        </div>
+        </div> -->
         <div class="modal-orden-tomada">
             <span><strong>Total:</strong></span>
-            <span>{{detalleOrden.total}}</span>
+            <span>L. {{detalleOrden.total}}</span>
         </div>
-
         <div id="botones-orden" class="py-4">
-            <button type="button" class="btn btn-primary mx-1">Tomar Orden</button>
-            <button type="button" class="btn btn-primary mx-1" style="background-color: rgba(138, 128, 253, .20);color: black;">En camino</button>
-            <button type="button" class="btn btn-primary mx-1">En origen</button>
-            <button type="button" class="btn btn-primary mx-1">En destino</button>
+            <button [ngClass]="{ activo: estadoOrden == 'tomada' }" type="button" class="btn btn-primary mx-1" (click)="cambiarEstado('tomada',detalleOrden)">Tomada</button>
+            <button [ngClass]="{ activo: estadoOrden == 'camino' }" type="button" class="btn btn-primary mx-1" (click)="cambiarEstado('camino',detalleOrden)">En camino</button>
+            <button [ngClass]="{ activo: estadoOrden == 'origen' }" type="button" class="btn btn-primary mx-1" (click)="cambiarEstado('origen',detalleOrden)">En origen</button>
+            <button [ngClass]="{ activo: estadoOrden == 'destino' }" type="button" class="btn btn-primary mx-1" (click)="cambiarEstado('destino',detalleOrden)">En destino</button>
         </div>
-
         <div class="modal-footer-orden-tomada">
             <button type="button" style="border-radius: 20px;" class="btn btn-outline-dark" (click)="modal.close('cerrar modal')">Cerrar</button>
         </div>

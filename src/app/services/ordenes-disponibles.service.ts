@@ -14,6 +14,8 @@ export class OrdenesDisponiblesService {
   }
 
   borrarOrden(idOrden):Observable<any>{
-    return this.httpClient.delete('http://localhost:8888/ordenes-disponibles');
+    console.log(idOrden);
+    return this.httpClient.delete(`http://localhost:8888/ordenes-disponibles/${idOrden}`);
   }
+
 }

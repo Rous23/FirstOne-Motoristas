@@ -58,7 +58,7 @@
             <span>{{detalleOrden.cliente.nombres}}</span>
         </div>
         <div class="modal-orden-tomada">
-            <span><strong>Direccón: </strong></span>
+            <span><strong>Dirección: </strong></span>
             <span style="padding-left: 55px;">{{detalleOrden.cliente.direccionEntrega.direccion}}</span>
         </div>
         <div class="modal-orden-tomada">
@@ -66,7 +66,7 @@
             <span>{{detalleOrden.total}}</span>
         </div>
         <div id="botones-orden" class="py-4">
-            <button type="button" class="btn btn-primary mx-1" (click) = "tomarOrden(detalleOrden._id)">Tomar Orden</button>
+            <button type="button" class="btn btn-primary mx-1" (click) = "tomarOrden(detalleOrden)">Tomar Orden</button>
         </div>
         <div class="modal-footer-orden-tomada">
             <button type="button" style="border-radius: 20px;" class="btn btn-outline-dark" (click)="modal.close('cerrar modal')">Cerrar</button>

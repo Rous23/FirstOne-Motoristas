@@ -44,12 +44,17 @@ export class MotoristasService {
   }
 
   actualizarContrasena(idMotorista, contrasena):Observable<any>{
-    return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/actualizar-contrasena`, contrasena);
+    let dato={
+      contrasena:contrasena
+    }
+    return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/actualizar-contrasena`, dato);
   }
 
   guardarOrden(idMotorista,data):Observable<any>{
     return this.httpClient.post(`http://localhost:8888/motoristas/${idMotorista}/ordenes-tomadas`, data);
   }
-  
 
+  cambiarEstado(idOrden, data):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/motoristas/ordenes-tomadas/${idOrden}/cambiar-estado`, data);
+  }
 }
